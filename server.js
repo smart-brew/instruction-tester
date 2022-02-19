@@ -46,7 +46,9 @@ wss.on('connection', (ws) => {
     // send message to all children
     if (wsClient.isMaster) {
       clients.forEach((module) => {
-        if (module?.moduleId && module?.moduleId === data?.moduleId) {
+        // eslint-disable-next-line eqeqeq
+        if (module?.moduleId && module?.moduleId == data?.moduleId) {
+          console.log('sending to module: ' + module?.moduleId);
           module.send(JSON.stringify(data));
         }
       });

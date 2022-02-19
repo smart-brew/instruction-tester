@@ -5,6 +5,7 @@ const WS_URL = 'ws://localhost:8001';
 const instructions = [
   {
     moduleId: 1,
+    type: 'instruction',
     instruction: 'SET_MOTOR_SPEED',
     param: 30, // 0 - 100
     category: 'MOTOR',
@@ -12,6 +13,7 @@ const instructions = [
   },
   {
     moduleId: 1,
+    type: 'instruction',
     instruction: 'SET_TEMPERATURE',
     param: 27,
     category: 'TEMPERATURE',
@@ -19,6 +21,7 @@ const instructions = [
   },
   {
     moduleId: 1,
+    type: 'instruction',
     instruction: 'SET_FREQ',
     param: 100, // 0 - 500
     category: 'MOTOR',
@@ -26,6 +29,7 @@ const instructions = [
   },
   {
     moduleId: 1,
+    type: 'instruction',
     instruction: 'ACCEL_TIME', // time to accelerate up to target speed (seconds)
     param: 3,
     category: 'MOTOR',
@@ -33,6 +37,7 @@ const instructions = [
   },
   {
     moduleId: 1,
+    type: 'instruction',
     instruction: 'DECEL_TIME', // time to decelerate (seconds)
     param: 2,
     category: 'MOTOR',
@@ -40,6 +45,7 @@ const instructions = [
   },
   {
     moduleId: 1,
+    type: 'instruction',
     instruction: 'SET_TIMER', // value 0 menas no timer - endless operation until stopped manually (minutes)
     param: 0,
     category: 'MOTOR',
@@ -73,7 +79,7 @@ function App() {
       className="App"
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      <div className="buttons" style={{ display: 'flex' }}>
+      <div className="buttons" style={{ display: 'flex', flexWrap: 'wrap' }}>
         {instructions.map((instr) => {
           return (
             <button
@@ -89,7 +95,7 @@ function App() {
       <textarea
         className="instruction"
         rows="10"
-        cols="80"
+        style={{ width: '380px' }}
         id="TITLE"
         value={JSON.stringify(instruction, null, 2)}
         onChange={(e) => setInstruction(JSON.parse(e.target.value))}

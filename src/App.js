@@ -51,17 +51,51 @@ const instructions = [
     category: 'MOTOR',
     device: 'MOTOR_1',
   },
+  {
+    moduleId: 1,
+    type: 'instruction',
+    instruction: 'OPEN_RELAY',
+    param: 0,
+    category: 'RELAY',
+    device: 'RELAY_1',
+  },
+  {
+    moduleId: 1,
+    type: 'instruction',
+    instruction: 'CLOSE_RELAY',
+    param: 0,
+    category: 'RELAY',
+    device: 'RELAY_1',
+  },
+  {
+    moduleId: 1,
+    type: 'instruction',
+    instruction: 'SET_ANGLE',
+    param: 50,
+    category: 'SERVO',
+    device: 'SERVO_1',
+  },
 ];
 
 function App() {
   const [instruction, setInstruction] = React.useState(instructions[0]);
+  const [data, setData] = React.useState({});
   const [visible, setVisible] = React.useState(false);
   const ws = React.useRef(null);
 
   React.useEffect(() => {
     ws.current = new WebSocket(WS_URL);
+
+    ws.current.onopen = (e) => {
+      console.log('WS CONNECT');
+
+      ws.current.send(JSON.stringify({ isMaster: true }));
+    };
+
     ws.current.onmessage = (e) => {
       console.log(e.data);
+
+      setData(JSON.parse(e.data));
     };
   }, []);
 
@@ -113,6 +147,7 @@ function App() {
       >
         Sent!
       </div>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 }

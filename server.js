@@ -46,16 +46,27 @@ wss.on('connection', (ws) => {
     // send message to all children
     if (wsClient.isMaster) {
       clients.forEach((module) => {
-        // eslint-disable-next-line eqeqeq
         if (module?.moduleId && module?.moduleId == data?.moduleId) {
           console.log('sending to module: ' + module?.moduleId);
           module.send(JSON.stringify(data));
         }
       });
     }
+
+    if (!wsClient.isMaster) {
+      clients.forEach((module) => {
+        // eslint-disable-next-line eqeqeq
+        if (module?.moduleId && module?.moduleId === 'master') {
+          console.log('sending to master: ' + module?.moduleId);
+          module.send(JSON.stringify(data));
+        }
+      });
+    }
   });
 
-  wsClient.send('WS has succesfully connected to server');
+  wsClient.send(
+    JSON.stringify({ message: 'WS has succesfully connected to server' })
+  );
 
   wsClient.isAlive = true;
   wsClient.on('pong', () => {

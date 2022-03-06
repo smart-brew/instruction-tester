@@ -46,10 +46,10 @@ const instructions = [
   {
     moduleId: 1,
     type: 'instruction',
-    instruction: 'SET_TIMER', // value 0 menas no timer - endless operation until stopped manually (minutes)
-    param: 0,
-    category: 'MOTOR',
-    device: 'MOTOR_1',
+    instruction: 'WAIT',
+    param: 5, // in seconds
+    category: 'SYSTEM',
+    device: 'TIMER',
   },
   {
     moduleId: 1,

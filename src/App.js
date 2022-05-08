@@ -7,73 +7,73 @@ const instructions = [
     moduleId: 1,
     type: 'instruction',
     instruction: 'SET_MOTOR_SPEED',
-    param: 30, // 0 - 100
+    params: '30', // 0 - 500
     category: 'MOTOR',
-    device: 'MOTOR_1',
+    DEVICE: 'MOTOR_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'SET_TEMPERATURE',
-    param: 27,
+    params: '27',
     category: 'TEMPERATURE',
-    device: 'TEMP_1',
+    DEVICE: 'TEMP_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'SET_FREQ',
-    param: 100, // 0 - 500
+    params: '100', // 0 - 50
     category: 'MOTOR',
-    device: 'MOTOR_1',
+    DEVICE: 'MOTOR_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'ACCEL_TIME', // time to accelerate up to target speed (seconds)
-    param: 3,
+    params: '3',
     category: 'MOTOR',
-    device: 'MOTOR_1',
+    DEVICE: 'MOTOR_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'DECEL_TIME', // time to decelerate (seconds)
-    param: 2,
+    params: '2',
     category: 'MOTOR',
-    device: 'MOTOR_1',
+    DEVICE: 'MOTOR_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'WAIT',
-    param: 5, // in seconds
+    params: '5', // in second
     category: 'SYSTEM',
-    device: 'TIMER',
+    DEVICE: 'TIMER',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'OPEN_RELAY',
-    param: 0,
+    params: '0',
     category: 'RELAY',
-    device: 'RELAY_1',
+    DEVICE: 'RELAY_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'CLOSE_RELAY',
-    param: 0,
+    params: '0',
     category: 'RELAY',
-    device: 'RELAY_1',
+    DEVICE: 'RELAY_1',
   },
   {
     moduleId: 1,
     type: 'instruction',
     instruction: 'SET_ANGLE',
-    param: 50,
+    params: '50',
     category: 'SERVO',
-    device: 'SERVO_1',
+    DEVICE: 'SERVO_1',
   },
 ];
 
